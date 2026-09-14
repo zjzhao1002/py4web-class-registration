@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="[[=URL('static')]]/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="[[=URL('static','favicon.ico')]]" />
+    <link rel="stylesheet" href="css/pico.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <script src="js/theme-selector.js"></script>
+    [[block page_head]]<!-- individual pages can customize header here -->[[end]]
+  </head>
+  <body>
+    <header class="dash-header">
+      <nav>
+        <a href="[[=URL('index')]]" style="font-weight:600">py4web Dashboard</a>
+        <span style="color:var(--pico-muted-color); margin:0 0.5rem">/</span>
+        <span>dbadmin</span>
+      </nav>
+      <button type="button" class="theme-toggle" data-theme-toggle onclick="toggleDashboardTheme()">
+        <span data-theme-label>☾ Dark</span>
+      </button>
+    </header>
+
+    <main class="container">
+      <flash-alerts data-alert="[[=globals().get('flash','')]]"></flash-alerts>
+      [[include]]
+    </main>
+
+    <footer class="dash-footer">
+      <span>Part of <a href="https://py4web.com">py4web</a></span>
+      <a href="[[=URL('index')]]" role="button" class="secondary outline">Back</a>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    [[block page_scripts]]<!-- individual pages can add scripts here -->[[end]]
+  </body>
+</html>

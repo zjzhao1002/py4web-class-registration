@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="[[=URL('static')]]/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="[[=URL('static','favicon.ico')]]" />
+    <link rel="stylesheet" href="css/pico.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/theme-selector.js"></script>
+    <title>Ticket — py4web</title>
+  </head>
+  <body>
+    <header class="dash-header">
+      <nav>
+        <a href="[[=URL('index')]]" style="font-weight:600">py4web Dashboard</a>
+        <span style="color:var(--pico-muted-color); margin:0 0.5rem">/</span>
+        <span>ticket</span>
+      </nav>
+      <button type="button" class="theme-toggle" data-theme-toggle onclick="toggleDashboardTheme()">
+        <span data-theme-label>☾ Dark</span>
+      </button>
+    </header>
+
+    <main class="container ticket-page">
+      <hgroup>
+        <h2>Error Ticket</h2>
+        <p>[[=ticket.get('error')]]</p>
+      </hgroup>
+
+      <div class="ticket-traceback">
+        <pre>[[=ticket.get('snapshot',{}).get('traceback')]]</pre>
+      </div>
+
+      <div class="ticket">[[=BEAUTIFY(ticket)]]</div>
+    </main>
+  </body>
+</html>

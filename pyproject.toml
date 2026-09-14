@@ -1,0 +1,9 @@
+[project]
+name = "py4web-class-registration"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "py4web>=1.20260805.0",
+]

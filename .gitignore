@@ -1,0 +1,42 @@
+# Python bytecode and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Packaging and tool caches
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Local credentials and configuration
+.env
+.env.*
+!.env.example
+!.env.sample
+/password.txt
+settings_private.py
+
+# py4web runtime state, databases, and uploaded files
+/apps/.service/
+/apps/**/databases/*
+!/apps/**/databases/.gitkeep
+!/apps/**/databases/README.md
+/apps/**/uploads/*
+!/apps/**/uploads/.gitkeep
+!/apps/**/uploads/README.md
+*.log
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
