@@ -1,0 +1,12 @@
+[[extend 'layout.html']]
+
+<div class="section">
+  <div class="vars">
+      [[=message]]
+      [[if user:]]
+      <a class="button" href="[[=URL('offerings')]]">
+        Registration
+      </a>
+      [[pass]]
+  </div>
+</div>

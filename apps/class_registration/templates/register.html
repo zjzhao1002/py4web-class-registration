@@ -1,0 +1,23 @@
+[[extend 'layout.html']]
+
+<div class="section">
+  <div class="block">
+      <div>
+        Class: [[=offering_info.catalog_class.number]]
+        [[=offering_info.catalog_class.name]]
+      </div>
+      <div>
+        [[=offering_info.quarter.season]]
+        [[=offering_info.quarter.year]]
+      </div>
+  </div>
+  <div class="block">
+    [[if cancelling:]]
+    <div>Confirm that you would like to cancel your registration for this class.</div>
+    [[else:]]
+    <div>If you would like to register, please leave a message for the instructor.</div>
+    <div>If the class is full, you will be added to the waitlist.</div>
+    [[pass]]
+    [[=form]]
+  </div>
+</div>
