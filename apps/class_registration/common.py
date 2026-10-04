@@ -31,6 +31,7 @@ from py4web.utils.factories import ActionFactory
 from py4web.utils.mailer import Mailer
 
 from . import settings
+from .profile_forms import StudentAuthForms
 
 # #######################################################
 # implement custom loggers form settings.LOGGERS
@@ -246,6 +247,7 @@ else:
 # #######################################################
 # Enable authentication
 # #######################################################
+auth.form_source = StudentAuthForms(auth)
 auth.enable(uses=(session, T, db), env=dict(T=T))
 
 # #######################################################

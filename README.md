@@ -24,11 +24,11 @@ A sample class has been added to the local database through the [py4web dashboar
 
 1. Sign up and log in.
 2. Click **Registration** on the home page.
-3. Enter a unique, nonempty **SUID** when prompted. The app links the student profile to the logged-in account automatically.
+3. Open **Edit Profile** and enter a unique, nonempty **Student ID**, plus your department and major. Saving creates or updates the student record linked to your account. Users without a student record are sent to this page before browsing sections.
 4. Find the sample class in the offerings grid, click **Register**, optionally leave a note, and submit the form.
 5. To withdraw, click **Cancel** beside the class and confirm cancellation.
 
-When a user opens a class registration URL before creating a student profile, the app returns them to that class after they submit their SUID.
+After completing a profile prompted by the sections page, the app returns the user to sections. There is no separate `student_profile` page.
 
 ### Registration rules
 
@@ -68,8 +68,7 @@ Paths below are relative to `/class_registration/`. All except the home page req
 | --- | --- |
 | `index` or the app root | Welcome page and registration link. |
 | `offerings` | Class grid; users without a student profile are redirected to create one. |
-| `student_profile` | Create a profile, then return to offerings. |
-| `student_profile/<offering_id>` | Create a profile, then return to the selected class. |
+| `auth/profile` | Edit account information, student ID, department, and major together. |
 | `register/<offering_id>` | Register or confirm cancellation for a class. |
 
 Authentication pages are provided under `auth/`, including signup, login, logout, and account profile editing.
@@ -78,7 +77,7 @@ Authentication pages are provided under `auth/`, including signup, login, logout
 
 - Waitlisting records a status only. Cancellation does not automatically promote waitlisted students, and the app does not display queue positions or a dedicated registration-status page.
 - Class data is managed through the shell or dashboard; the student grid is read-only apart from registration actions.
-- SUIDs are checked for presence and uniqueness, not verified against a university directory. The student profile form only creates profiles; it does not edit existing SUIDs.
+- Student IDs are checked for presence and uniqueness, not verified against a university directory. The account profile form creates and edits the linked student record.
 - Capacity locking is specific to the configured SQLite database.
 - Email delivery is not configured. Use `--dev` for the local demo.
 
