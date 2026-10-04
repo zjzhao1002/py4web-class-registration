@@ -1,5 +1,14 @@
 [[extend 'layout.html']]
 
+[[block page_head]]
+<style>
+  body > center > main.padded {
+    max-width: none;
+    width: 100%;
+  }
+</style>
+[[end]]
+
 <div class="section">
   <div class="container">
       [[=grid]]
