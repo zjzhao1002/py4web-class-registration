@@ -1,0 +1,23 @@
+[[extend 'layout.html']]
+
+<div class="section">
+  <div class="block">
+      <div>
+        <b>Class:</b> [[=section_info.course.number]]-[[=section_info.course_section.section_number]]
+        [[=section_info.course.name]]
+      </div>
+      <div>
+        <b>Quarter:</b> [[=section_info.quarter.year]]
+        [[=section_info.quarter.season]]
+      </div>
+  </div>
+  <div class="block">
+    [[if cancelling:]]
+    <div>Confirm that you would like to cancel your registration for this class.</div>
+    [[else:]]
+    <div>If you would like to register, please leave a message for the instructor.</div>
+    <div>If the course is full, you will be added to the waitlist.</div>
+    [[pass]]
+    [[=form]]
+  </div>
+</div>

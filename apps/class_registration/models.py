@@ -93,20 +93,6 @@ db.executesql("""
     ON registration (student_id, course_section_id)
 """)
 
-# A waitlist is a view of registrations, not a second source of enrollment state.
-# Positions are one-based and are recomputed after cancellations/promotions.
-def get_waitlist(course_section_id):
-    rows = db(
-        (db.registration.course_section_id == course_section_id)
-        & (db.registration.status == "waitlisted")
-    ).select(
-        db.registration.ALL,
-        orderby=db.registration.registration_date | db.registration.id,
-    )
-    return [dict(row.as_dict(), position=position)
-            for position, row in enumerate(rows, start=1)]
-
-
 db.executesql("""
     CREATE INDEX IF NOT EXISTS registration_section_status_date
     ON registration (course_section_id, status, registration_date, id)

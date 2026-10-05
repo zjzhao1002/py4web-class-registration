@@ -40,20 +40,6 @@ class ModelIntegrityTests(unittest.TestCase):
             section_id=self.section, day_of_week=day,
             start_time=start, end_time=end, location="Room A")
 
-    def test_waitlist_order_and_contiguous_positions(self):
-        first = self.register("first")
-        second = self.register("second")
-        earlier = self.register("earlier", date=datetime.datetime(2026, 10, 3, 9))
-        self.register("enrolled", status="enrolled")
-        rows = self.namespace["get_waitlist"](self.section)
-        self.assertEqual([row["id"] for row in rows], [earlier, first, second])
-        self.assertEqual([row["position"] for row in rows], [1, 2, 3])
-        self.db.registration[earlier].update_record(status="dropped")
-        self.db.registration[first].update_record(status="enrolled")
-        rows = self.namespace["get_waitlist"](self.section)
-        self.assertEqual([(row["id"], row["position"]) for row in rows], [(second, 1)])
-        self.assertEqual(self.namespace["get_waitlist"](-1), [])
-
     def test_registration_cannot_be_duplicated(self):
         registration = self.db.registration[self.register("student")]
         with self.assertRaises(sqlite3.IntegrityError):
